@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <title>オーダーシートまとめるくん</title>
+
+  <meta
+    name="description"
+    content="イラストの依頼内容と参考画像をまとめて、文章や画像で保存できるツールです。"
+  >
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+
+<body>
+  <header class="site-header">
+    <h1>オーダーシートまとめるくん</h1>
+    <p>イラスト依頼シート作成ツール</p>
+  </header>
+
+  <main>
+    <details class="privacy">
+      <summary>使い方</summary>
+
+      <div class="privacy-body">
+        <p>
+          全項目任意です。必要な項目だけ入力してください。
+          空欄は完成シートに表示されません。
+        </p>
+
+        <p>
+          入力内容は自動保存されません。
+          ページを閉じたり更新したりする前に、
+          画像や文章として保存してください。
+        </p>
+
+        <p>
+          完成したシートは、ご自身で依頼先へお送りください。
+        </p>
+      </div>
+    </details>
+
+    <details class="privacy">
+      <summary>入力内容・参考画像の取り扱い</summary>
+
+      <div class="privacy-body">
+        <p>
+          シートの作成はブラウザ内で行います。
+          本ツールには、入力内容や参考画像を外部へ送信する機能、
+          AIで解析する機能はありません。
+        </p>
+      </div>
+    </details>
+
+    <div class="workspace" id="workspace">
+      <section class="editor">
+        <nav
+          class="steps"
+          aria-label="入力ステップ"
+        ></nav>
+
+        <form
+          id="brief-form"
+          autocomplete="off"
+        ></form>
+
+        <noscript>
+          <p class="notice">
+            このツールを使うにはJavaScriptを有効にしてください。
+          </p>
+        </noscript>
+
+        <div class="step-actions">
+          <button
+            type="button"
+            id="prev"
+            class="secondary"
+          >
+            戻る
+          </button>
+
+          <span id="step-count"></span>
+
+          <button
+            type="button"
+            id="next"
+            class="primary"
+          >
+            次へ
+          </button>
+        </div>
+      </section>
+
+      <aside class="sidebar">
+        <section class="summary-card">
+          <h2>入力内容</h2>
+
+          <div id="summary-items"></div>
+
+          <p id="filled-count">
+            0項目 入力済み
+          </p>
+        </section>
+
+        <p class="save-note">
+          自動保存はありません。
+          ページを閉じる前に保存してください。
+        </p>
+
+        <button
+          type="button"
+          id="reset"
+          class="text-button"
+        >
+          入力をすべてクリア
+        </button>
+      </aside>
+    </div>
+
+    <footer>
+      <p>
+        依頼条件・対応範囲・料金は、
+        ご依頼先の案内をご確認ください。
+      </p>
+    </footer>
+  </main>
+
+  <div
+    id="toast"
+    role="status"
+    aria-live="polite"
+  ></div>
+
+  <dialog
+    id="reset-dialog"
+    aria-labelledby="reset-title"
+  >
+    <h2 id="reset-title">
+      入力をクリアしますか？
+    </h2>
+
+    <p>
+      入力した内容と参考画像をすべて削除します。
+      この操作は取り消せません。
+    </p>
+
+    <div class="dialog-actions">
+      <button
+        type="button"
+        id="cancel-reset"
+        class="secondary"
+      >
+        キャンセル
+      </button>
+
+      <button
+        type="button"
+        id="confirm-reset"
+        class="primary"
+      >
+        クリアする
+      </button>
+    </div>
+  </dialog>
+</body>
+</html>
